@@ -1,0 +1,71 @@
+{#- Patient Template for eICR/RR documents -#}
+{%- macro format_address(addr, use='H') %}
+    <addr use="{{ use }}">
+    {%- if addr.street %}<streetAddressLine>{{ addr.street }}</streetAddressLine>{%- endif %}
+        {%- if addr.city %}<city>{{ addr.city }}</city>{%- endif %}
+            {%- if addr.state %}<state>{{ addr.state }}</state>{%- endif %}
+                {%- if addr.zip %}<postalCode>{{ addr.zip }}</postalCode>{%- endif %}
+                    {%- if addr.county %}<county>{{ addr.county }}</county>{%- endif %}
+                        {%- if addr.country %}<country>{{ addr.country }}</country>{%- endif %}
+                            </addr>
+                        {%- endmacro %}
+                        {%- macro format_telecom(contact, use='H') %}
+                            {%- if contact.phone %}<telecom use="{{ use }}" value="tel:{{ contact.phone }}" />{%- endif %}
+                                {%- if contact.email %}<telecom use="{{ use }}" value="mailto:{{ contact.email }}" />{%- endif %}
+                                {%- endmacro %}
+                                <recordTarget>
+                                <patientRole>
+                                {#- Patient Identifiers -#}
+                                {%- if patient.identifiers.medical_record %}
+                                    <id root="{{ patient.identifiers.medical_record.root }}" extension="{{ patient.identifiers.medical_record.extension }}" />
+                                {%- endif %}
+                                {%- if patient.identifiers.ssn and not patient.identifiers.ssn.nullFlavor %}
+                                    <id root="2.16.840.1.113883.4.1" extension="{{ patient.identifiers.ssn.extension }}" />
+                                {%- endif %}
+                                {#- Patient Address -#}
+                                {%- if patient.address and not patient.address.nullFlavor %}{{ format_address(patient.address) }}{%- endif %}
+                                    {#- Patient Contact Information -#}
+                                    {%- if patient.contact and not patient.contact.nullFlavor %}{{ format_telecom(patient.contact) }}{%- endif %}
+                                        <patient>
+                                        {#- Patient Name -#}
+                                        {%- if patient.name %}
+                                            <name use="{{ patient.name.use|default("L") }}">
+                                            {%- if patient.name.prefix %}<prefix>{{ patient.name.prefix }}</prefix>{%- endif %}
+                                            <given>{{ patient.name.given }}</given>
+                                            <family>{{ patient.name.family }}</family>
+                                            </name>
+                                        {%- endif %}
+                                        {#- Demographics -#}
+                                        <administrativeGenderCode code="{{ patient.demographics.gender.code }}" codeSystem="2.16.840.1.113883.5.1" displayName="{{ patient.demographics.gender.displayName }}" />
+                                        <birthTime value="{{ patient.demographics.birthDate|replace('-', '') }}" />
+                                        {%- if patient.demographics.deceased is defined %}
+                                            <sdtc:deceasedInd value="{{ patient.demographics.deceased|lower }}" />
+                                        {%- endif %}
+                                        <raceCode code="{{ patient.demographics.race.code }}" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="{{ patient.demographics.race.displayName }}" />
+                                        <ethnicGroupCode code="{{ patient.demographics.ethnicity.code }}" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race &amp; Ethnicity - CDC" displayName="{{ patient.demographics.ethnicity.displayName }}" />
+                                        {#- Language -#}
+                                        {%- if patient.demographics.language %}
+                                            <languageCommunication>
+                                            <languageCode code="{{ patient.demographics.language.code }}" />
+                                            {%- if patient.demographics.language.preferred is defined %}
+                                                <preferenceInd value="{{ patient.demographics.language.preferred|lower }}" />
+{%- endif %}
+</languageCommunication>
+{%- endif %}
+</patient>
+{#- Guardian Information (if exists and not null) -#}
+{%- if patient.guardian and not patient.guardian.nullFlavor %}
+<guardian>
+<guardianPerson>
+<name use="{{ patient.guardian.name.use|default("L") }}">
+{%- if patient.guardian.name.prefix %}<prefix>{{ patient.guardian.name.prefix }}</prefix>{%- endif %}
+<given>{{ patient.guardian.name.given }}</given>
+<family>{{ patient.guardian.name.family }}</family>
+</name>
+</guardianPerson>
+{%- if patient.guardian.address %}{{ format_address(patient.guardian.address) }}{%- endif %}
+{%- if patient.guardian.contact %}{{ format_telecom(patient.guardian.contact) }}{%- endif %}
+</guardian>
+{%- endif %}
+</patientRole>
+</recordTarget>
