@@ -1,0 +1,9 @@
+[project]
+name = "star-wars-ecr-data"
+version = "0.1.0"
+description = "Creating Star Wars themed eCR data for testing publich health applications"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "jinja2>=3.1.5",
+]
