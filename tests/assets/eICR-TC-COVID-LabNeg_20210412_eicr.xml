@@ -1,0 +1,593 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc"
+  xmlns:voc="http://www.lantanagroup.com/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="urn:hl7-org:v3 ../../schema/infrastructure/cda/CDA_SDTC.xsd">
+  <realmCode code="US"/>
+  <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3"
+    ><!--[C-CDA R1.1] US Realm Header--></typeId>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1"
+    ><!-- [C-CDA R2.1] US Realm Header (V3) --></templateId>
+  <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.1.1"
+    ><!--[eICR R2 STU1.1] Initial Public Health Case Report Document (eICR) (V2) --></templateId>
+  <templateId extension="2016-12-01" root="2.16.840.1.113883.10.20.15.2"/>
+  <id root="40fc3506-f9c2-45bf-a4f8-cbfe5cf744e8"
+    ><!--Globally unique document ID (extension) is scoped by vendor/software--></id>
+  <code code="55751-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+    displayName="Public Health Case Report"><!--Document Code--></code>
+  <title>Initial Public Health Case Report</title>
+  <effectiveTime value="20200505150045-0400"/>
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal"/>
+  <languageCode code="en-US"/>
+  <setId extension="8d86218e-0fea-11eb-8216-a80388425cfb" root="1.2.840.114350.1.13.380.3.7.1.1"/>
+  <versionNumber value="1"/>
+  <recordTarget>
+    <!--******************************************************** recordTarget: The patient ********************************************************-->
+    <patientRole>
+      <id extension="PT-470125" root="2.16.840.1.113883.19.5"><!--Patient ID--></id>
+      <!--SSN-->
+      <id extension="333-33-3333" root="2.16.840.1.113883.4.1"/>
+      <addr use="H">
+        <streetAddressLine>0987 Home Street</streetAddressLine>
+        <city>Provo</city>
+        <state>UT</state>
+        <postalCode>84601</postalCode>
+        <county/>
+        <country>US</country>
+      </addr>
+      <telecom use="HP" value="tel:555-555-2003"/>
+      <telecom use="HP" value=""/>
+      <patient>
+        <name use="L">
+          <given>Everyman</given>
+          <family>Adam</family>
+        </name>
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" displayName="Male"/>
+        <birthTime value="19670913"/>
+        <sdtc:deceasedInd value="false"/>
+        <raceCode code="2054-5" codeSystem="2.16.840.1.113883.6.238"
+          codeSystemName="Race &amp; Ethnicity - CDC" displayName="Black or African American"/>
+        <ethnicGroupCode code="2186-5" codeSystem="2.16.840.1.113883.6.238"
+          codeSystemName="Race &amp; Ethnicity - CDC" displayName="Not Hispanic or Latino"/>
+        <languageCommunication>
+          <languageCode code="en"/>
+          <preferenceInd value="true"/>
+        </languageCommunication>
+      </patient>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <!--Author/authenticator may be software or may be a provider such as "infection control professional"-->
+    <time value="20200505150045-0400"/>
+    <assignedAuthor>
+      <id root="2.16.840.1.113883.3.72.5.20"/>
+      <addr use="WP">
+        <streetAddressLine>1002 Healthcare Drive</streetAddressLine>
+        <city>Provo</city>
+        <state>UT</state>
+        <postalCode>84601</postalCode>
+        <county/>
+        <country/>
+      </addr>
+      <telecom use="WP" value="tel:555-777-0123"/>
+      <telecom use="WP" value="fax:555-777-0987"/>
+      <assignedAuthoringDevice>
+        <manufacturerModelName displayName="TBD Device"/>
+        <softwareName/>
+      </assignedAuthoringDevice>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id extension="TBDFacility#" root="2.16.840.1.113883.4.6"><!--Custodian ID--></id>
+        <name>Provo Outpatient Clinic</name>
+        <telecom use="WP" value="tel:555-777-0123"/>
+        <addr use="WP">
+          <streetAddressLine>1002 Healthcare Drive</streetAddressLine>
+          <city>Provo</city>
+          <state>UT</state>
+          <postalCode>84601</postalCode>
+          <county/>
+          <country/>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <participant typeCode="IND">
+    <time nullFlavor="UNK"/>
+    <associatedEntity classCode="ECON">
+      <addr nullFlavor="NI"/>
+      <telecom value="tel:+1-555-555-3456" use="MC"/>
+      <associatedPerson>
+        <name use="L">
+          <prefix>Mr</prefix>
+          <given>Emer</given>
+          <family>Contact</family>
+        </name>
+      </associatedPerson>
+    </associatedEntity>
+  </participant>
+  <componentOf>
+    <!--******************************************************** componentOf: contains the encompassingEncouter and the provider and facility infomation for the case ********************************************************-->
+    <encompassingEncounter>
+      <id extension="9937014" root="2.16.840.1.113883.19"><!--encounter ID--></id>
+      <code code="AMB" codeSystem="2.16.840.1.113883.5.4"
+        codeSystemName="HL7 ActEncounterCode" displayName="Ambulatory"/>   
+      
+      <effectiveTime>
+        <low value="20200512"/>
+        <high value="20200512"/>
+      </effectiveTime>
+      <responsibleParty>
+        <assignedEntity>
+          <id extension="66666666666" root="2.16.840.1.113883.4.6"><!--Provider ID--></id>
+          <addr use="H">
+            <streetAddressLine>1002 Healthcare Drive</streetAddressLine>
+            <city>Provo</city>
+            <state>UT</state>
+            <postalCode>84601</postalCode>
+            <county/>
+            <country>US</country>
+          </addr>
+          <telecom use="WP" value="tel:555-777-0123"/>
+          <telecom use="WP" value="fax:555-777-0987"/>
+          <assignedPerson>
+            <name>
+              <given>Harold</given>
+              <family>Hippocrates</family>
+              <suffix>MD</suffix>
+            </name>
+          </assignedPerson>
+          <representedOrganization>
+            <id extension="TBDFacility#" root="2.16.840.1.113883.4.6"
+              ><!--Represented Organization--></id>
+            <name>Provo Outpatient Clinic<!--Provider Facility/Office Name--></name>
+            <addr use="WP">
+              <streetAddressLine>1002 Healthcare Drive</streetAddressLine>
+              <city>Provo</city>
+              <state>UT</state>
+              <postalCode>84601</postalCode>
+              <county/>
+              <country/>
+            </addr>
+          </representedOrganization>
+        </assignedEntity>
+      </responsibleParty>
+      <location>
+        <healthCareFacility>
+          <id extension="2365" root="2.16.840.1.113883.4.6"><!--Facility ID--></id>
+          <code code="OF" codeSystem="2.16.840.1.113883.5.111" codeSystemName="HL7RoleCode"
+            displayName="Outpatient Facility"
+            ><!--Facility location within larger healthcare organization e.g Kaiser Vacaville within Kaiser North--></code>
+          <location>
+            <addr use="WP">
+              <streetAddressLine>1002 Healthcare Drive</streetAddressLine>
+              <city>Provo</city>
+              <state>UT</state>
+              <postalCode>84601</postalCode>
+              <county/>
+              <country/>
+            </addr>
+          </location>
+          <serviceProviderOrganization>
+            <name>Provo Outpatient Clinic<!--Provider Facility/Office Name--></name>
+            <telecom use="WP" value="tel:555-777-0123"/>
+            <telecom use="WP" value="fax:555-777-0987"/>
+            <addr use="WP">
+              <streetAddressLine>1002 Healthcare Drive</streetAddressLine>
+              <city>Provo</city>
+              <state>UT</state>
+              <postalCode>84601</postalCode>
+              <county/>
+              <country/>
+            </addr>
+          </serviceProviderOrganization>
+        </healthCareFacility>
+      </location>
+    </encompassingEncounter>
+  </componentOf>
+  <component>
+    <structuredBody>
+      <component>
+        <!--******************************************************** Encounters Section ********************************************************-->
+        <section>
+          <!--[C-CDA R1.1] Encounters Section (entries optional)-->
+          <templateId root="2.16.840.1.113883.10.20.22.2.22"/>
+          <!--[C-CDA R2.1] Encounters Section (entries optional) (V3)-->
+          <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.22"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.22.1"/>
+          <!-- [C-CDA R2.1] Encounters Section (entries required) (V3)-->
+          <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.22.1"/>
+          <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="History of encounters"/>
+          <title>Encounters</title>
+          <text>
+            <table>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <thead>
+                <tr>
+                  <th>Encounter</th>
+                  <th>Date(s)</th>
+                  <th>Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="id_9543eeed-b087-4014-bbdd-2f4b4a182e81_ref">
+                  <td>Office outpatient visit 15 minutes</td>
+                  <td>05/12/2020</td>
+                  <td>Provo Outpatient Clinic</td>
+                </tr>
+                <tr>
+                  <td>
+                    <list styleCode="none">
+                      <item>
+                        <table>
+                          <col width="15%"/>
+                          <col width="15%"/>
+                          <col width="15%"/>
+                          <col width="15%"/>
+                          <col width="15%"/>
+                          <col width="15%"/>
+                          <col width="15%"/>
+                          <col width="15%"/>
+                          <col width="15%"/>
+                          <col width="15%"/>
+                          <thead>
+                            <tr>
+                              <th/>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td/>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </item>
+                    </list>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <!---->
+            <encounter classCode="ENC" moodCode="EVN">
+              <!--[C-CDA R1.1] Encounter Activities-->
+              <templateId root="2.16.840.1.113883.10.20.22.4.49"/>
+              <!--[C-CDA R2.1] Encounter Activities (V3)-->
+              <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.4.49"/>
+              <id root="9543eeed-b087-4014-bbdd-2f4b4a182e81"/>
+              <code code="99213" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4"
+                displayName="Office outpatient visit 15 minutes"/>
+              <effectiveTime value="20200512"/>
+            </encounter>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--******************************************************** History of Present Illness Section ********************************************************-->
+        <section>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.4"/>
+          <code code="10164-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="History of Present Illness"/>
+          <title>History of Present Illness</title>
+          <text mediaType="text/x-hl7-text+xml">
+            <paragraph>Patient thinks he was in contact with a COVID-10 positive person;
+            </paragraph>
+          </text>
+        </section>
+      </component>
+      <component>
+        <!--******************************************************** Medications Administered Section ********************************************************-->
+        <section nullFlavor="NI">
+          <!--[C-CDA R1.1] Medications Administered Section-->
+          <templateId root="2.16.840.1.113883.10.20.22.2.38"/>
+          <!--[C-CDA R2.0] Medications Administered Section (V2) -->
+          <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.2.38"/>
+          <code code="29549-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="Medications Administered"/>
+          <title>Medications Administered</title>
+          <text>No medications administered</text>
+        </section>
+      </component>
+      <component>
+        <!--******************************************************** Problems Section ********************************************************-->
+        <section nullFlavor="NI">
+          <!--[C-CDA R1.1] Problem Section (entries optional)-->
+          <templateId root="2.16.840.1.113883.10.20.22.2.5"/>
+          <!--[C-CDA R2.1] Problem Section (entries optional) (V3)-->
+          <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.5"/>
+          <!--[C-CDA R1.1] Problem Section (entries required)-->
+          <templateId root="2.16.840.1.113883.10.20.22.2.5.1"/>
+          <!-- [C-CDA R2.1] Problem Section (entries required) (V3)-->
+          <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.5.1"/>
+          <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="Problem List"/>
+          <title>Problem List</title>
+          <text>No problems reported</text>
+        </section>
+      </component>
+      <component>
+        <!--******************************************************** Reason for visit Section ********************************************************-->
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.12"/>
+          <code code="29299-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="Reason for visit"/>
+          <title>Reason for visit</title>
+          <text>
+            <paragraph>Patient thinks he was in contact with a COVID-10 positive person </paragraph>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.3.1"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01"/>
+          <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="RESULTS"/>
+          <title>RESULTS</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Lab Test Name</th>
+                  <th>Lab Test Result Value</th>
+                  <th>Lab Test Result Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <content ID="labTestResultValueDate1">2020-05-13T08:30:00-07:00</content>
+                  </td>
+                  <td>
+                    <content ID="labTestName1">Neisseria gonorrhoeae DNA [Presence] in Nasopharynx by NAA with probe detection</content>
+                  </td>
+                  <td>
+                    <content ID="labTestResultValue1">Detected</content>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="labTestResultValueDate2">2020-05-13T08:30:00-07:00</content>
+                  </td>
+                  <td>
+                    <content ID="labTestName2">Chlamydia trachomatis rRNA [Presence] in Vaginal fluid by NAA with probe detection</content>
+                  </td>
+                  <td>
+                    <content ID="labTestResultValue2">Not Detected</content>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="labTestResultValueDate3">2020-05-14T08:30:00-07:00</content>
+                  </td>
+                  <td>
+                    <content ID="labTestName3">SARS-like Coronavirus N gene [Presence] in Unspecified specimen by NAA with probe detection</content>
+                  </td>
+                  <td>
+                    <content ID="labTestResultValue3">Not Detected</content>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <organizer classCode="BATTERY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.1" extension="2015-08-01"/>
+              <id root="24323852-d5a0-47bd-9d0d-8dea227b84ad"/>
+              <code code="57180-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="loinc.org" displayName="Neisseria gonorrhoeae DNA [Presence] in Nasopharynx by NAA with probe detection"></code>
+              <statusCode code="completed"/>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+                  <id root="2.16.840.1.113883.4.945.1" extension="http://localhost:4080/Observation/scenario-3-observation-2/_history/21532502-fcbf-470c-9e5e-71b7f4d3830c"/>
+                  <code code="57180-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="loinc.org" displayName="Neisseria gonorrhoeae DNA [Presence] in Nasopharynx by NAA with probe detection"></code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20200513153000"/>
+                  <value xsi:type="CD" code="260373001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="sct" displayName="Detected (qualifier value)"></value>
+                  <interpretationCode code="A" codeSystem="2.16.840.1.113883.5.83" codeSystemName="v3-ObservationInterpretation" displayName="Abnormal"></interpretationCode>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry typeCode="DRIV">
+            <organizer classCode="BATTERY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.1" extension="2015-08-01"/>
+              <id root="94fc09ba-06a8-40df-84f9-c68270da1440"/>
+              <code code="53926-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="loinc.org" displayName="Chlamydia trachomatis rRNA [Presence] in Vaginal fluid by NAA with probe detection"></code>
+              <statusCode code="completed"/>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+                  <id root="2.16.840.1.113883.4.945.1" extension="http://localhost:4080/Observation/scenario-3-observation-1/_history/d3b78eb6-8926-4ea2-9b01-55b1162d978e"/>
+                  <code code="53926-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="loinc.org" displayName="Chlamydia trachomatis rRNA [Presence] in Vaginal fluid by NAA with probe detection"></code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20200513153000"/>
+                  <value xsi:type="CD" code="260415000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="sct" displayName="Not Detected"></value>
+                  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="v3-ObservationInterpretation" displayName="Normal"></interpretationCode>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry typeCode="DRIV">
+            <organizer classCode="BATTERY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.1" extension="2015-08-01"/>
+              <id root="bcf43cb4-6d72-474f-975d-352c6a233734"/>
+              <code code="94310-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="loinc.org" displayName="SARS-like Coronavirus N gene [Presence] in Unspecified specimen by NAA with probe detection"></code>
+              <statusCode code="completed"/>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+                  <templateId root="2.16.840.1.113883.10.20.15.2.3.2" extension="2016-12-01"/>
+                  <id root="2.16.840.1.113883.4.945.1" extension="http://localhost:4080/Observation/scenario-3-observation-3/_history/cf098ab8-e3d7-4c1b-8272-43536d093cf0"/>
+                  <code code="94310-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="SARS-like Coronavirus N gene [Presence] in Unspecified specimen by NAA with probe detection" sdtc:valueSet="2.16.840.1.114222.4.11.7508" sdtc:valueSetVersion="2021-01-13"></code>
+                  <statusCode code="completed"/>
+                  <effectiveTime value="20200514153000"/>
+                  <value xsi:type="CD" code="260415000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="sct" displayName="Not Detected"></value>
+                  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="v3-ObservationInterpretation" displayName="Normal"></interpretationCode>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--******************************************************** Plan of Care/Treatment Section ********************************************************-->
+        <section>
+          <!--[C-CDA R1.1] Plan of Care Section new-->
+          <templateId root="2.16.840.1.113883.10.20.22.2.22.1"/>
+          <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.2.22.1"/>
+          <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="Plan of Treatment"/>
+          <title>Plan of Treatment</title>
+          <text>
+            <paragraph>*** In the table below, row entries with values under RCTC columns triggered
+              this Electronic Initial Case Report (eICR)</paragraph>
+            <table>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <col width="15%"/>
+              <thead>
+                <tr>
+                  <th>Lab Test Order</th>
+                  <th>Code</th>
+                  <th>CodeSystem</th>
+                  <th>RCTC OID ***</th>
+                  <th>RCTC Version ***</th>
+                  <th>Ordered Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="id_d779f48e-a3d1-4c90-94b6-82a81cda24f3_ref">
+                  <td>SARS-related coronavirus RNA [Presence] in Unspecified specimen by NAA with
+                    probe detection </td>
+                  <td>94647-5</td>
+                  <td>LOINC</td>
+                  <td/>
+                  <td/>
+                  <td>05/12/2020</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <!--This is a request for a test to be performed (a lab test order)-->
+            <observation classCode="OBS" moodCode="RQO">
+              <!--[C-CDA R1.1] Plan of Care Activity Observation-->
+              <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+              <!--[C-CDA R2.0] Planned Observation (V2)-->
+              <templateId extension="2014-06-09" root="2.16.840.1.113883.10.20.22.4.44"/>
+              <id root="d779f48e-a3d1-4c90-94b6-82a81cda24f3"/>
+              <code code="94647-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                displayName="SARS-related coronavirus RNA [Presence] in Unspecified specimen by NAA with probe detection "/>
+              <statusCode code="active"/>
+              <effectiveTime value="20200512"/>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--******************************************************** Social History Section ********************************************************-->
+        <section>
+          <!-- [C-CDA 1.1] Social History Section-->
+          <templateId root="2.16.840.1.113883.10.20.22.2.17"/>
+          <!--[C-CDA 2.1] Social History Section (V3)-->
+          <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.2.17"/>
+          <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="Social History"/>
+          <title>Social History</title>
+          <text>
+            <table>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <thead>
+                <tr>
+                  <th>Birth Sex</th>
+                  <th>Value</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sex Assigned At Birth</td>
+                  <td>Male</td>
+                  <td>09/13/1967</td>
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <col width="10%"/>
+              <thead>
+                <tr>
+                  <th>Social History Observation Type</th>
+                  <th>Value</th>
+                  <th>Dates(s)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ID="id_14ba4186-419e-4777-b65b-11ea1b21cfe8_ref">
+                  <td>Occupation / Employment details</td>
+                  <td/>
+                  <td/>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <!--[C-CDA R2.1 Companion Guide] Birth Sex Observation -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.200"/>
+              <templateId extension="2016-06-01" root="2.16.840.1.113883.10.20.22.4.200"/>
+              <code code="76689-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                displayName="Sex Assigned At Birth"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="19670913"
+                ><!--effectiveTime if present should match birthTime--></effectiveTime>
+              <value code="M" codeSystem="2.16.840.1.113883.5.1"
+                codeSystemName="AdministrativeGender" displayName="Male" xsi:type="CD"/>
+            </observation>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>
