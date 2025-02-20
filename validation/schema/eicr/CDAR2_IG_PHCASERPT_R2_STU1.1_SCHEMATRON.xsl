@@ -17,11 +17,11 @@
                     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
       <dct:creator>
          <dct:Agent>
-            <skos:prefLabel>SchXslt/1.9.5 SAXON/HE 12.4.2</skos:prefLabel>
+            <skos:prefLabel>SchXslt/1.9.5 SAXON/HE 12.5</skos:prefLabel>
             <schxslt.compile.typed-variables xmlns="https://doi.org/10.5281/zenodo.1495494#">true</schxslt.compile.typed-variables>
          </dct:Agent>
       </dct:creator>
-      <dct:created>2024-05-02T14:42:22.094349-07:00</dct:created>
+      <dct:created>2025-02-20T11:08:39.970595-08:00</dct:created>
    </rdf:Description>
    <xsl:output indent="yes"/>
    <xsl:template match="root()">
@@ -44,11 +44,11 @@
                <rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/">
                   <dct:creator>
                      <dct:Agent>
-                        <skos:prefLabel>SchXslt/1.9.5 SAXON/HE 12.4.2</skos:prefLabel>
+                        <skos:prefLabel>SchXslt/1.9.5 SAXON/HE 12.5</skos:prefLabel>
                         <schxslt.compile.typed-variables xmlns="https://doi.org/10.5281/zenodo.1495494#">true</schxslt.compile.typed-variables>
                      </dct:Agent>
                   </dct:creator>
-                  <dct:created>2024-05-02T14:42:22.094349-07:00</dct:created>
+                  <dct:created>2025-02-20T11:08:39.970595-08:00</dct:created>
                </rdf:Description>
             </dct:source>
          </svrl:metadata>

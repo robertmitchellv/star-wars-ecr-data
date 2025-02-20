@@ -7,78 +7,162 @@ from rich.table import Table
 
 # define the base directory and file paths
 base_dir = Path(__file__).parent.parent
-xslt_path = (
-    base_dir / "validation" / "schema" / "CDAR2_IG_PHCASERPT_R2_STU1.1_SCHEMATRON.xsl"
+eicr_xslt_path = (
+    base_dir
+    / "validation"
+    / "schema"
+    / "eicr"
+    / "CDAR2_IG_PHCASERPT_R2_STU1.1_SCHEMATRON.xsl"
+)
+rr_xslt_path = (
+    base_dir
+    / "validation"
+    / "schema"
+    / "rr"
+    / "CDAR2_IG_PHCR_R2_RR_D1_2017DEC_SCHEMATRON.xsl"
 )
 svrl_output_path = base_dir / "validation" / "logs" / "svrl-output.xml"
 
 
+def determine_document_type(xml_path):
+    """
+    Determine if the XML is an eICR or RR document by checking the LOINC code
+    """
+    console = Console()
+
+    # show the user the selected file so they can see what was the file
+    # was determined to be so they can spot check
+    console.print(f"Selected file: {xml_path}")
+
+    try:
+        tree = etree.parse(str(xml_path))
+        root = tree.getroot()
+
+        # Define namespace map
+        nsmap = {
+            "hl7": "urn:hl7-org:v3",
+            "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        }
+
+        # Look for the code element
+        code_element = root.xpath("//hl7:code/@code", namespaces=nsmap)
+
+        if not code_element:
+            console.print("✗ No LOINC code found in document", style="bold bright_red")
+            return None, None
+
+        loinc_code = code_element[0]
+
+        # RR specific LOINC code: 88085-6
+        if loinc_code == "88085-6":
+            console.print(
+                "✓ Successfully identified document as RR (LOINC: 88085-6)",
+                style="bold green1",
+            )
+            return "rr", rr_xslt_path
+        # eICR specific LOINC code: 55751-2
+        elif loinc_code == "55751-2":
+            console.print(
+                "✓ Successfully identified document as eICR (LOINC: 55751-2)",
+                style="bold green1",
+            )
+            return "eicr", eicr_xslt_path
+        else:
+            console.print(
+                f"✗ Unknown document type - found LOINC code: {loinc_code}",
+                style="bold bright_red",
+            )
+            return None, None
+
+    except Exception as e:
+        console.print(
+            f"✗ Error determining document type: {str(e)}", style="bold bright_red"
+        )
+        return None, None
+
+
 def parse_svrl(svrl_result):
-    # parse the svrl result string
     svrl_doc = etree.fromstring(svrl_result.encode("utf-8"))
+    ns = {"svrl": "http://purl.oclc.org/dsdl/svrl"}
 
-    # namespace map for finding elements
-    ns = {
-        "svrl": "http://purl.oclc.org/dsdl/svrl",
-        "sch": "http://purl.oclc.org/dsdl/schematron",
-    }
-
-    # extract all failed assertions
     results = []
     for assertion in svrl_doc.xpath(".//svrl:failed-assert", namespaces=ns):
-        fired_rule = assertion.xpath(
-            "preceding-sibling::svrl:fired-rule[1]", namespaces=ns
-        )
-        role = fired_rule[0].get("role") if fired_rule else "Role not found or missing"
-
         text_element = assertion.find("svrl:text", namespaces=ns)
-        text = text_element.text.strip() if text_element is not None else "No message"
-        location = assertion.get("location", "No context provided").strip()
-        test = assertion.get("test", "No test provided").strip()
+        message = (
+            text_element.text.strip() if text_element is not None else "No message"
+        )
+
+        # check the start of the message to determine primary rule type
+        # this will prevent SHOULD rules that contain a mention of SHALL
+        # from being catagorized as errors
+        first_word = message.split()[0] if message else ""
+
+        # determine severity from first word or initial phrase
+        if first_word == "SHALL":
+            severity = "ERROR"
+        elif message.startswith("SHOULD") or "SHOULD contain" in message:
+            severity = "WARNING"
+        elif first_word == "MAY":
+            severity = "INFO"
+        # If none of the above, check for SHALL/SHOULD anywhere in message
+        elif "SHALL" in message and "SHOULD" not in message:
+            severity = "ERROR"
+        elif "SHOULD" in message:
+            severity = "WARNING"
+        else:
+            severity = "UNKNOWN"
 
         results.append(
-            {"severity": role, "message": text, "context": location, "test": test}
+            {
+                "severity": severity,
+                "message": message,
+                "context": assertion.get("location", "No context"),
+                "test": assertion.get("test", "No test"),
+                "id": assertion.get("id", "No ID"),
+            }
         )
+
     return results
 
 
 def display_svrl(validation_results, console):
-    # create a Rich table with the specified format
     table = Table(show_header=True, header_style="bold magenta", show_lines=True)
     table.add_column("Severity", style="dim", width=12)
     table.add_column("Message", style="dim", width=52)
     table.add_column("Context", style="dim", width=52)
     table.add_column("Test", style="dim", width=52)
 
-    # add rows to the table
     for result in validation_results:
+        severity = result["severity"]
         style = (
             "bright_red"
-            if "error" in result["severity"].lower()
+            if severity in ["ERROR", "FATAL"]
             else "orange1"
-            if "warning" in result["severity"].lower()
-            else ""
+            if severity == "WARNING"
+            else "blue"
+            if severity == "INFO"
+            else "dim"
         )
         table.add_row(
-            result["severity"],
-            result["message"],
-            result["context"],
-            result["test"],
-            style=style,
+            severity, result["message"], result["context"], result["test"], style=style
         )
 
-    # display the table
     console.print(table)
 
 
 def display_summary(validation_results, console):
-    errors = [res for res in validation_results if "error" in res["severity"].lower()]
-    warnings = [
-        res for res in validation_results if "warning" in res["severity"].lower()
+    # count both ERROR and FATAL as errors
+    errors = [
+        res for res in validation_results if res["severity"] in ["ERROR", "FATAL"]
     ]
+    warnings = [res for res in validation_results if res["severity"] == "WARNING"]
+    infos = [res for res in validation_results if res["severity"] == "INFO"]
 
     console.print(f"Total Errors: {len(errors)}", style="bold bright_red")
     console.print(f"Total Warnings: {len(warnings)}", style="bold orange1")
+    # only show info count if there are any
+    if infos:
+        console.print(f"Total Info: {len(infos)}", style="bold blue")
 
     if len(errors) > 0:
         console.print("Validation Failed Due to Errors", style="bold bright_red")
@@ -92,6 +176,18 @@ def display_summary(validation_results, console):
 
 def validate_xml_with_schematron(xml_path):
     console = Console()
+
+    # determine document type and get appropriate xsl
+    doc_type, xslt_path = determine_document_type(xml_path)
+    if not doc_type:
+        console.print(
+            "Could not determine if document is eICR or RR. Validation aborted.",
+            style="bold bright_red",
+        )
+        return
+
+    console.print(f"Detected document type: {doc_type.upper()}", style="bold blue")
+
     with PySaxonProcessor(license=False) as processor:
         xslt_processor = processor.new_xslt30_processor()
         try:
