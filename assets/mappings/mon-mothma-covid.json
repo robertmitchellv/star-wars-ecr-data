@@ -116,7 +116,7 @@
       "contact": {
         "address": {
           "use": "H",
-          "street": "300 Republica Apartment 2A",
+          "street": "500 Republica, Suite 400",
           "city": "Senate District",
           "state": "Galactic City",
           "zip": "GC-500",
@@ -124,12 +124,12 @@
           "country": "Coruscant"
         },
         "phone": {
-          "use": "HP",
-          "value": "555-555-0123"
+          "use": "MC",
+          "value": "+1-555-555-9876"
         },
         "email": {
-          "use": "HP",
-          "value": "mon.mothma@senate.coruscant.example.com"
+          "use": "WP",
+          "value": "mon.mothma@senate.gr.example.com"
         }
       },
       "guardian": {
