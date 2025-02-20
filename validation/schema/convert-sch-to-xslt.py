@@ -6,8 +6,8 @@ base_dir = Path(__file__).parent
 stylesheet_path = base_dir / "schxslt" / "pipeline-for-svrl.xsl"
 eicr_schematron_path = base_dir / "eicr" / "CDAR2_IG_PHCASERPT_R2_STU1.1_SCHEMATRON.sch"
 rr_schematron_path = base_dir / "rr" / "CDAR2_IG_PHCR_R2_RR_D1_2017DEC_SCHEMATRON.sch"
-eicr_output_path = base_dir / "CDAR2_IG_PHCASERPT_R2_STU1.1_SCHEMATRON.xsl"
-rr_output_path = base_dir / "CDAR2_IG_PHCR_R2_RR_D1_2017DEC_SCHEMATRON.xsl"
+eicr_output_path = base_dir / "eicr" / "CDAR2_IG_PHCASERPT_R2_STU1.1_SCHEMATRON.xsl"
+rr_output_path = base_dir / "rr" / "CDAR2_IG_PHCR_R2_RR_D1_2017DEC_SCHEMATRON.xsl"
 
 
 def transform_schematron(processor, input_path, output_path, stylesheet_path):
