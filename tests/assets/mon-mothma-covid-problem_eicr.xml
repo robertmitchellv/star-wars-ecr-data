@@ -155,6 +155,7 @@
           </addr>
           <telecom use="WP" value="tel:+1-555-777-0123" />
           <telecom use="WP" value="fax:+1-555-777-0987" />
+          <telecom use="WP" value="mailto:dr.hemlock@grmfc.gc.example.com" />
           <assignedPerson>
             <name>
               <prefix>Dr</prefix>
