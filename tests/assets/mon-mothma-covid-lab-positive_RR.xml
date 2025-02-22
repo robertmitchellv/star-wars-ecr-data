@@ -5,14 +5,16 @@
   <realmCode code="US" />
   <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
   <templateId extension="2017-04-01" root="2.16.840.1.113883.10.20.15.2.1.2" />
-  <id root="7f8d597f-18fc-4865-a97c-5e1977594f79" />
+  <id root="deb6d64f-a4ce-402d-ad4f-3d3d912ccdef" />
   <code code="88085-6" codeSystem="2.16.840.1.113883.6.1"
     displayName="Reportability response report Document Public health" />
   <title>Reportability Response</title>
   <effectiveTime value="20161212094421-0700" />
   <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal" />
   <languageCode code="en-US" />
+  <!-- recordTarget: The patient -->
   <recordTarget>
+    <!-- Patient demographics -->
     <patientRole>
       <!-- Patient ID-->
       <id extension="MRN-00884455" root="2.16.840.1.113883.19.5" />
@@ -53,7 +55,7 @@
 
   <!-- author for RRs is _always_ going to be AIMS -->
   <author>
-    <time value="20210412132542+0000" />
+    <time value="20210412132517+0000" />
     <assignedAuthor>
       <id root="2.16.840.1.114222.4.1.217446" />
       <addr>
@@ -105,7 +107,6 @@
       <telecom use="WP" value="tel:+1-555-777-0123" />
       <telecom use="WP" value="fax:+1-555-777-0987" />
       <telecom use="WP" value="mailto:dr.hemlock@grmfc.gc.example.com" />
-      <!-- assignedPerson in the eICR (the provider) -->
       <informationRecipient>
         <name>
           <prefix>Dr</prefix>
@@ -114,11 +115,11 @@
           <suffix>MD</suffix>
         </name>
       </informationRecipient>
-
       <!-- representedOrganization in the eICR -->
       <receivedOrganization>
         <!-- NPI for the facility -->
         <id extension="1234567893" root="2.16.840.1.113883.4.6" />
+
         <!-- Provider Facility/Office Name-->
         <name>Grand Republic Medical Facility Clinic</name>
         <addr use="WP">
@@ -133,10 +134,11 @@
     </intendedRecipient>
   </informationRecipient>
 
+
   <componentOf>
-    <!-- encounter ID-->
     <encompassingEncounter>
-      <id extension="9937012" root="2.16.840.1.113883.19" />
+      <!-- encounter ID-->
+      <id extension="9937015" root="2.16.840.1.113883.19" />
       <code code="AMB" codeSystem="2.16.840.1.113883.5.4"
         codeSystemName="HL7 ActEncounterCode" displayName="Ambulatory" />
       <effectiveTime>
@@ -243,7 +245,7 @@
                 root="2.16.840.1.113883.10.20.22.4.20" />
               <templateId extension="2017-04-01"
                 root="2.16.840.1.113883.10.20.15.2.3.7" />
-              <id root="df76ed70-85e3-467d-996b-ae95cec73448" />
+              <id root="a0fd6898-c2e1-4350-bfff-3c6e51a802af" />
               <code code="131195008" codeSystem="2.16.840.1.113883.6.96"
                 codeSystemName="SNOMED CT" displayName="Subject of information" />
               <text>Public Health Reporting Communication: one or more conditions are
@@ -253,12 +255,9 @@
           </entry>
         </section>
       </component>
-
-      <!-- eICR section -->
       <component>
         <section>
           <templateId extension="2017-04-01" root="2.16.840.1.113883.10.20.15.2.2.3" />
-          <!-- initial case report processing information Document (LOINC) -->
           <code code="88082-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
             displayName="Initial case report processing information Document" />
           <entry>
@@ -270,20 +269,20 @@
                 codeSystemName="PHIN VS (CDC Local Coding System)"
                 displayName="Received eICR Information" />
               <statusCode code="completed" />
-              <effectiveTime value="20210412132542+0000" />
+              <effectiveTime value="20210412132553+0000" />
               <reference typeCode="REFR">
                 <externalDocument classCode="DOCCLIN" moodCode="EVN">
                   <templateId extension="2014-06-09"
                     root="2.16.840.1.113883.10.20.22.4.115" />
                   <templateId extension="2017-04-01"
                     root="2.16.840.1.113883.10.20.15.2.3.10" />
-                  <id root="e91bc1e8-2523-4047-a663-1e3e07812948" />
+                  <id root="10c13861-86a8-4a9a-aec6-b615921178df" />
                   <code code="55751-2" codeSystem="2.16.840.1.113883.6.1"
                     codeSystemName="LOINC"
                     displayName="Public Health Case Report (eICR)" />
                   <setId extension="8d86218e-0fea-11eb-8216-a80388425cfb"
                     root="1.2.840.114350.1.13.380.3.7.1.1" />
-                  <versionNumber value="1" />
+                  <versionNumber value="3" />
                 </externalDocument>
               </reference>
             </act>
@@ -313,12 +312,9 @@
           </entry>
         </section>
       </component>
-
-      <!-- RR summary section -->
       <component>
         <section>
           <templateId extension="2017-04-01" root="2.16.840.1.113883.10.20.15.2.2.2" />
-          <!-- document summary -->
           <code code="55112-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
           <title>.</title>
           <text>
@@ -326,14 +322,12 @@
             <paragraph>Your organization electronically submitted an initial case report
               to determine if reporting to public health is needed for a
               patient.</paragraph>
-            <paragraph>"Disease caused by severe acute respiratory syndrome coronavirus 2
-              (disorder)" is reportable to "Senate District Department of Health". The initial case
-              report was sent to "Senate District Department of Health". Additional information may
-              be required for this report.<br /></paragraph>
+            <paragraph>"Coronavirus infection (disorder)" is reportable to "Senate District Health
+              Department". The initial case report was sent to "Senate District Health Department".
+              Additional information may be required for this report.<br /></paragraph>
             <paragraph>
-              <content styleCode="Bold">"Disease caused by severe acute respiratory
-                syndrome coronavirus 2 (disorder)" for "Senate District Department of Health"
-              </content>
+              <content styleCode="Bold">"Coronavirus infection (disorder)" for
+                "Senate District Health Department" </content>
             </paragraph>
             <paragraph>Reporting is required immediately. Reporting to this Public Health Agency is
               based on "Both patient home address and provider facility address"<br /></paragraph>
@@ -342,15 +336,9 @@
                   href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
                 >Information only</linkHtml>
                 )<br /><br /></content>
-              <content>&gt; Public Health Agency Contact Information (<linkHtml
-                  href="http://health.senate-district.gr/epi/">Information
+              <content>&gt; Senate District Health Department Epidemiology Web Page (<linkHtml
+                  href="http://www.health.senate-district.gr/epi/">Information
                   only</linkHtml>)<br /><br /></content>
-            </paragraph>
-            <paragraph>Additional Resources:<br /></paragraph>
-            <paragraph>
-              <content>&gt; (<linkHtml href="https://coronavirus.senate-district.gr/"
-                >Information
-                  only</linkHtml> )<br /><br /></content>
             </paragraph>
           </text>
           <entry typeCode="DRIV">
@@ -359,7 +347,7 @@
                 root="2.16.840.1.113883.10.20.22.4.20" />
               <templateId extension="2017-04-01"
                 root="2.16.840.1.113883.10.20.15.2.3.8" />
-              <id root="86fdc612-8ba2-4b03-8e90-c726a39b6149" />
+              <id root="3350332c-7d7b-465f-aa7e-fd1da3184540" />
               <code code="304561000" codeSystem="2.16.840.1.113883.6.96"
                 codeSystemName="SNOMED CT"
                 displayName="Informing health care professional (procedure)" />
@@ -392,22 +380,21 @@
                 <observation classCode="OBS" moodCode="EVN">
                   <templateId extension="2017-04-01"
                     root="2.16.840.1.113883.10.20.15.2.3.12" />
-                  <id root="d1845880-2deb-4fc3-9c10-67af40bf7255" />
+                  <id root="17f6392f-9340-45d3-a1c8-bc0a30d09f53" />
                   <code code="64572001" codeSystem="2.16.840.1.113883.6.96"
                     codeSystemName="SNOMED" displayName="Condition">
                     <translation code="75323-6"
                       codeSystem="2.16.840.1.113883.6.1"
                       codeSystemName="LOINC" displayName="Condition" />
                   </code>
-                  <value code="840539006" codeSystem="2.16.840.1.113883.6.96"
+                  <value code="186747009" codeSystem="2.16.840.1.113883.6.96"
                     codeSystemName="SNOMED CT"
-                    displayName="Disease caused by severe acute respiratory syndrome coronavirus 2 (disorder)"
-                    xsi:type="CD" />
+                    displayName="Coronavirus infection (disorder)" xsi:type="CD" />
                   <entryRelationship typeCode="COMP">
                     <organizer classCode="CLUSTER" moodCode="EVN">
                       <templateId extension="2017-04-01"
                         root="2.16.840.1.113883.10.20.15.2.3.13" />
-                      <id root="7b88878e-77b0-44f5-bc2b-7b9f188dce8b" />
+                      <id root="64d30ae1-09f9-4f17-858f-79dec6581396" />
                       <code code="RRVS7"
                         codeSystem="2.16.840.1.114222.4.5.274"
                         codeSystemName="Location Relevance"
@@ -417,16 +404,21 @@
                         <templateId extension="2017-04-01"
                           root="2.16.840.1.113883.10.20.15.2.4.3" />
                         <participantRole>
-                          <!-- made up senate district authoring agency id -->
-                          <id extension="SDDH-GC-500" root="2.16.840.1.113883.4.6" />
+                          <id extension="ht" root="2.16.840.1.113883.4.6" />
                           <code code="RR12"
                             codeSystem="2.16.840.1.114222.4.5.232"
                             codeSystemName="PHIN Questions"
                             displayName="Rules Authoring Agency" />
-                          <addr nullFlavor="NI" />
-                          <telecom nullFlavor="NI" />
+                          <addr use="WP">
+                            <streetAddressLine>8000 N. Stadium
+                              Dr</streetAddressLine>
+                            <city>Senate District</city>
+                            <state>TX</state>
+                            <postalCode>77054</postalCode>
+                          </addr>
+                          <telecom use="WP" value="832-393-5080" />
                           <playingEntity>
-                            <name>Senate District Department of Health</name>
+                            <name>Senate District Health Department</name>
                           </playingEntity>
                         </participantRole>
                       </participant>
@@ -434,15 +426,21 @@
                         <templateId extension="2017-04-01"
                           root="2.16.840.1.113883.10.20.15.2.4.1" />
                         <participantRole>
-                          <id extension="ut" root="2.16.840.1.113883.4.6" />
+                          <id extension="ht" root="2.16.840.1.113883.4.6" />
                           <code code="RR7"
                             codeSystem="2.16.840.1.114222.4.5.232"
                             codeSystemName="PHIN Questions"
                             displayName="Routing Entity" />
-                          <addr nullFlavor="NI" />
-                          <telecom nullFlavor="NI" />
+                          <addr use="WP">
+                            <streetAddressLine>8000 N. Stadium
+                              Dr</streetAddressLine>
+                            <city>Senate District</city>
+                            <state>TX</state>
+                            <postalCode>77054</postalCode>
+                          </addr>
+                          <telecom use="WP" value="832-393-5080" />
                           <playingEntity>
-                            <name>Senate District Department of Health</name>
+                            <name>Senate District Health Department</name>
                           </playingEntity>
                         </participantRole>
                       </participant>
@@ -450,7 +448,7 @@
                         <observation classCode="OBS" moodCode="EVN">
                           <templateId extension="2017-04-01"
                             root="2.16.840.1.113883.10.20.15.2.3.19" />
-                          <id root="0a3a6a58-5714-432d-9e0c-71f4a0bcad85" />
+                          <id root="4b581cf3-2a6c-49f8-afcb-e437d0af7a9e" />
                           <code code="RR1"
                             codeSystem="2.16.840.1.114222.4.5.232"
                             codeSystemName="PHIN Questions"
@@ -463,40 +461,42 @@
                             <observation classCode="OBS" moodCode="EVN">
                               <templateId extension="2017-04-01"
                                 root="2.16.840.1.113883.10.20.15.2.3.27" />
-                              <id root="b55c5080-03ee-4153-b43f-47d30045bd71" />
+                              <id root="a8e67405-dca7-4de3-83c3-93fc177a52dc" />
                               <code code="RR3"
                                 codeSystem="2.16.840.1.114222.4.5.232"
                                 codeSystemName="PHIN Questions"
                                 displayName="Determination of reportability rule" />
-                              <value xsi:type="ST">At least one of the following
-                                clinical findings: cough, shortness of breath,
-                                difficulty breathing, new olfactory disorder, or
-                                new taste disorder </value>
+                              <value xsi:type="ST">All results of tests for
+                                detection of SARS-CoV-2 nucleic acid in a clinical
+                                specimen by any method </value>
                             </observation>
                           </entryRelationship>
                           <entryRelationship typeCode="RSON">
                             <observation classCode="OBS" moodCode="EVN">
                               <templateId extension="2017-04-01"
                                 root="2.16.840.1.113883.10.20.15.2.3.27" />
-                              <id root="227a9821-838f-4f98-99c6-5ce57f6cf86d" />
+                              <id root="17881052-4f87-49a4-b583-cd1dd72491a8" />
                               <code code="RR3"
                                 codeSystem="2.16.840.1.114222.4.5.232"
                                 codeSystemName="PHIN Questions"
                                 displayName="Determination of reportability rule" />
-                              <value xsi:type="ST">COVID-19 (as a diagnosis or
-                                active problem)</value>
+                              <value xsi:type="ST">Detection of SARS-CoV-2
+                                nucleic acid in a clinical specimen by any
+                                method</value>
                             </observation>
                           </entryRelationship>
                           <entryRelationship typeCode="RSON">
                             <observation classCode="OBS" moodCode="EVN">
                               <templateId extension="2017-04-01"
                                 root="2.16.840.1.113883.10.20.15.2.3.27" />
-                              <id root="b1c39740-7476-4905-8b9b-43f40bd4cca1" />
+                              <id root="176f3b8c-c92f-44f1-93bd-c707231d6582" />
                               <code code="RR3"
                                 codeSystem="2.16.840.1.114222.4.5.232"
                                 codeSystemName="PHIN Questions"
                                 displayName="Determination of reportability rule" />
-                              <value xsi:type="ST">Difficulty breathing</value>
+                              <value xsi:type="ST">Lab test ordered for
+                                detection of SARS-CoV-2 nucleic acid in a clinical
+                                specimen by any method</value>
                             </observation>
                           </entryRelationship>
                         </observation>
@@ -505,7 +505,7 @@
                         <act classCode="ACT" moodCode="EVN">
                           <templateId extension="2017-04-01"
                             root="2.16.840.1.113883.10.20.15.2.3.20" />
-                          <id root="b64a88ec-3ab8-49e6-b397-1fe17d84106b" />
+                          <id root="6c22e63c-a7e7-4baa-84da-cc9ff165ec18" />
                           <code code="RRVS13"
                             codeSystem="2.16.840.1.114222.4.5.274"
                             codeSystemName="PHIN VS (CDC Local Coding System)"
@@ -534,7 +534,7 @@
                         <act classCode="ACT" moodCode="EVN">
                           <templateId extension="2017-04-01"
                             root="2.16.840.1.113883.10.20.15.2.3.20" />
-                          <id root="ad40c2db-4f74-4887-ba76-c75b0a549a8d" />
+                          <id root="cdc9447b-4301-4224-83a4-987c23e39081" />
                           <code code="RRVS12"
                             codeSystem="2.16.840.1.114222.4.5.274"
                             codeSystemName="PHIN VS (CDC Local Coding System)"
@@ -548,38 +548,13 @@
                               <templateId extension="2017-04-01"
                                 root="2.16.840.1.113883.10.20.15.2.3.17" />
                               <code nullFlavor="OTH">
-                                <originalText>Public Health Agency Contact
-                                  Information</originalText>
+                                <originalText>Senate District Health Department
+                                  Epidemiology Web Page</originalText>
                               </code>
                               <text mediaType="text/html">
-                                <reference value="http://health.senate-district.gr/epi/" />
-                              </text>
-                            </externalDocument>
-                          </reference>
-                        </act>
-                      </component>
-                      <component typeCode="COMP">
-                        <act classCode="ACT" moodCode="EVN">
-                          <templateId extension="2017-04-01"
-                            root="2.16.840.1.113883.10.20.15.2.3.20" />
-                          <id root="08bfc0e0-f733-4f1c-b573-ef83543d7ef3" />
-                          <code code="RRVS11"
-                            codeSystem="2.16.840.1.114222.4.5.274"
-                            codeSystemName="PHIN VS (CDC Local Coding System)"
-                            displayName="Additional Resources" />
-                          <priorityCode code="RRVS15"
-                            codeSystem="2.16.840.1.114222.4.5.274"
-                            codeSystemName="PHIN VS (CDC Local Coding System)"
-                            displayName="Information only" />
-                          <reference typeCode="REFR">
-                            <externalDocument classCode="DOC" moodCode="EVN">
-                              <templateId extension="2017-04-01"
-                                root="2.16.840.1.113883.10.20.15.2.3.17" />
-                              <code nullFlavor="OTH">
-                                <originalText />
-                              </code>
-                              <text mediaType="text/html">
-                                <reference value="https://coronavirus.senate-district.gr/" />
+                                <reference
+                                  value="http://www.health.senate-district.gr/epi/"
+                                />
                               </text>
                             </externalDocument>
                           </reference>
@@ -589,7 +564,7 @@
                         <observation classCode="OBS" moodCode="EVN">
                           <templateId extension="2017-04-01"
                             root="2.16.840.1.113883.10.20.15.2.3.14" />
-                          <id root="49e1a1e9-a92d-4460-a3cc-d0a88e8e21ee" />
+                          <id root="c9310968-6b8a-432c-91fb-beb0e78ef88e" />
                           <code code="RR4"
                             codeSystem="2.16.840.1.114222.4.5.232"
                             codeSystemName="PHIN Questions"
