@@ -11,16 +11,16 @@
   <templateId extension="2015-08-01" root="2.16.840.1.113883.10.20.22.1.1" />
   <templateId extension="2016-12-01" root="2.16.840.1.113883.10.20.15.2" />
   <!-- Globally unique document ID (extension) is scoped by vendor/software-->
-  <id root="e91bc1e8-2523-4047-a663-1e3e07812948" />
+  <id root="9408ddce-4dcb-416c-a153-82cce01839e2" />
   <!-- Document Code-->
   <code code="55751-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
     displayName="Public Health Case Report" />
   <title>Initial Public Health Case Report</title>
-  <effectiveTime value="20250217150045-0400" />
+  <effectiveTime value="20250218150045-0400" />
   <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" displayName="Normal" />
   <languageCode code="en-US" />
   <setId extension="8d86218e-0fea-11eb-8216-a80388425cfb" root="1.2.840.114350.1.13.380.3.7.1.1" />
-  <versionNumber value="1" />
+  <versionNumber value="2" />
   <!-- recordTarget: The patient -->
   <recordTarget>
     <!-- Patient demographics -->
@@ -65,7 +65,7 @@
   <!-- Author/authenticator may be software or may be a provider such as "infection control
   professional"-->
   <author>
-    <time value="20250215150045-0400" />
+    <time value="20250217150045-0400" />
     <assignedAuthor>
       <id root="2.16.840.1.113883.3.72.5.20" />
       <addr use="WP">
@@ -134,12 +134,12 @@
   <componentOf>
     <!-- encounter ID-->
     <encompassingEncounter>
-      <id extension="9937012" root="2.16.840.1.113883.19" />
+      <id extension="9937013" root="2.16.840.1.113883.19" />
       <code code="AMB" codeSystem="2.16.840.1.113883.5.4"
         codeSystemName="HL7 ActEncounterCode" displayName="Ambulatory" />
       <effectiveTime>
-        <low value="20250216" />
-        <high value="20250216" />
+        <low value="20250217" />
+        <high value="20250217" />
       </effectiveTime>
       <responsibleParty>
         <assignedEntity>
@@ -221,6 +221,7 @@
   <component>
     <!-- structredBody contains all of the clinical sections of the eICR -->
     <structuredBody>
+
       <!-- Encounters section -->
       <component>
         <section>
@@ -230,7 +231,7 @@
           <templateId extension="2015-08-01"
             root="2.16.840.1.113883.10.20.22.2.22" />
           <templateId root="2.16.840.1.113883.10.20.22.2.22.1" />
-          <!-- [C-CDA R2.1] Encounters Section (entries required) (V3) -->
+          <!-- [C-CDA R2.1] Encounters Section (entries required) (V3)-->
           <templateId extension="2015-08-01"
             root="2.16.840.1.113883.10.20.22.2.22.1" />
           <code code="46240-8" codeSystem="2.16.840.1.113883.6.1"
@@ -261,11 +262,11 @@
               <!-- [C-CDA R2.1] Encounter Activities (V3) -->
               <templateId extension="2015-08-01"
                 root="2.16.840.1.113883.10.20.22.4.49" />
-              <id root="dd5cda14-6b1b-4666-b928-b4995ac7dcd6" />
+              <id root="8c69827d-fc6e-4580-a1af-17f03078bbf0" />
               <code code="99213" codeSystem="2.16.840.1.113883.6.12"
                 codeSystemName="CPT-4"
                 displayName="Office outpatient visit 15 minutes" />
-              <effectiveTime value="20250216" />
+              <effectiveTime value="20200513" />
             </encounter>
           </entry>
         </section>
@@ -279,8 +280,8 @@
             codeSystemName="LOINC" displayName="History of Present Illness" />
           <title>History of Present Illness</title>
           <text mediaType="text/x-hl7-text+xml">
-            <paragraph>Since February 16, 2025 the patient has had difficulty
-              breathing and a fever; </paragraph>
+            <paragraph>fever, cough, exposure to COVID-19 hot zone;
+            </paragraph>
           </text>
         </section>
       </component>
@@ -303,7 +304,7 @@
       <!-- Problems Section -->
       <component>
         <section>
-          <!-- [C-CDA R1.1] Problem Section (entries optional)-->
+          <!-- [C-CDA R1.1] Problem Section (entries optional) -->
           <templateId root="2.16.840.1.113883.10.20.22.2.5" />
           <!-- [C-CDA R2.1] Problem Section (entries optional) (V3) -->
           <templateId extension="2015-08-01"
@@ -353,7 +354,7 @@
                           <tbody>
                             <tr>
                               <td>symptom</td>
-                              <td>Difficulty Breathing )finding)</td>
+                              <td>Difficulty Breathing</td>
                               <td>02/16/2025</td>
                               <td>230145002</td>
                               <td>SNOMED-CT</td>
@@ -385,7 +386,7 @@
               <!-- [C-CDA 2.1] Problem Concern Act (V3) -->
               <templateId extension="2015-08-01"
                 root="2.16.840.1.113883.10.20.22.4.3" />
-              <id root="a1c0c380-eacc-4b40-9207-85164185558d" />
+              <id root="420ffc00-7bd3-4191-82cd-1ebd4367f6a6" />
               <code code="CONC" codeSystem="2.16.840.1.113883.5.6"
                 displayName="Concern" />
               <statusCode code="active" />
@@ -399,7 +400,7 @@
                   <templateId root="2.16.840.1.113883.10.20.22.4.4" />
                   <templateId extension="2015-08-01"
                     root="2.16.840.1.113883.10.20.22.4.4" />
-                  <id root="1ab9be3d-7d95-478c-9db1-655bd93f7040" />
+                  <id root="5024cf76-074d-471b-b0f2-1330f73aa45f" />
                   <code code="75325-1"
                     codeSystem="2.16.840.1.113883.6.1"
                     codeSystemName="LOINC" displayName="SYMPTOM">
@@ -418,36 +419,6 @@
                     xsi:type="CD" />
                 </observation>
               </entryRelationship>
-              <entryRelationship typeCode="SUBJ">
-                <observation classCode="OBS" moodCode="EVN"
-                  negationInd="false">
-                  <!-- [C-CDA R1.1] Problem Observation -->
-                  <templateId root="2.16.840.1.113883.10.20.22.4.4" />
-                  <templateId extension="2015-08-01"
-                    root="2.16.840.1.113883.10.20.22.4.4" />
-                  <templateId extension="2016-12-01"
-                    root="2.16.840.1.113883.10.20.15.2.3.3" />
-                  <!-- [eICR R2 STU1.1] Initial Case Report Trigger Code Problem Observation -->
-                  <id root="1ea2fc61-9b88-4fd1-a43c-6e3f7502e0e8" />
-                  <code code="75325-1"
-                    codeSystem="2.16.840.1.113883.6.1"
-                    codeSystemName="LOINC" displayName="SYMPTOM">
-                    <translation code="418799008"
-                      codeSystem="2.16.840.1.113883.6.96"
-                      codeSystemName="SNOMED CT" displayName="SYMPTOM" />
-                  </code>
-                  <statusCode code="completed" />
-                  <effectiveTime>
-                    <low value="20250216" />
-                  </effectiveTime>
-                  <value code="186747009"
-                    codeSystem="2.16.840.1.113883.6.96"
-                    codeSystemName="SNOMED-CT"
-                    displayName="Coronavirus infection (disorder)"
-                    sdtc:valueSet="2.16.840.1.114222.4.11.7508"
-                    sdtc:valueSetVersion="20200429" xsi:type="CD" />
-                </observation>
-              </entryRelationship>
             </act>
           </entry>
         </section>
@@ -461,7 +432,8 @@
             codeSystemName="LOINC" displayName="Reason for visit" />
           <title>Reason for visit</title>
           <text>
-            <paragraph>Patient believes they have COVID-19 </paragraph>
+            <paragraph>fever, cough, exposure to COVID-19 hot zone
+            </paragraph>
           </text>
         </section>
       </component>
@@ -497,7 +469,56 @@
           <code code="18776-5" codeSystem="2.16.840.1.113883.6.1"
             codeSystemName="LOINC" displayName="Plan of Treatment" />
           <title>Plan of Treatment</title>
-          <text>Nothing to report in plan of care section</text>
+          <text>
+            <paragraph>*** In the table below, row entries with values under
+              RCTC columns triggered this Electronic Initial Case Report
+              (eICR)</paragraph>
+            <table>
+              <thead>
+                <tr>
+                  <th>Lab Test Order</th>
+                  <th>Code</th>
+                  <th>CodeSystem</th>
+                  <th>RCTC OID ***</th>
+                  <th>RCTC Version ***</th>
+                  <th>Ordered Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SARS-like Coronavirus N gene [Presence] in
+                    Unspecified specimen by NAA with probe
+                    detection</td>
+                  <td>94310-0 </td>
+                  <td>LOINC</td>
+                  <td>2.16.840.1.114222.4.11.7508</td>
+                  <td>20200429</td>
+                  <td>02/17/2025</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <!-- This is a request for a test to be performed (a lab test order) -->
+            <observation classCode="OBS" moodCode="RQO">
+              <!-- [C-CDA R1.1] Plan of Care Activity Observation -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.44" />
+              <!-- [C-CDA R2.0] Planned Observation (V2) -->
+              <templateId extension="2014-06-09"
+                root="2.16.840.1.113883.10.20.22.4.44" />
+              <templateId extension="2016-12-01"
+                root="2.16.840.1.113883.10.20.15.2.3.4" />
+              <!-- [eICR R2 STU1.1] Initial Case Report Trigger Code Lab Test Order -->
+              <id root="f2a3031b-f71a-4296-9bcd-fdf30031f68f" />
+              <code code="94310-0 " codeSystem="2.16.840.1.113883.6.1"
+                codeSystemName="LOINC"
+                displayName="SARS-like Coronavirus N gene [Presence] in Unspecified specimen by NAA with probe detection"
+                sdtc:valueSet="2.16.840.1.114222.4.11.7508"
+                sdtc:valueSetVersion="20200429" />
+              <statusCode code="active" />
+              <effectiveTime value="20250217" />
+            </observation>
+          </entry>
         </section>
       </component>
 
@@ -546,6 +567,22 @@
                 <tr>
                   <td>Pregnancy Status</td>
                   <td>No</td>
+                  <td />
+                </tr>
+              </tbody>
+            </table>
+            <table>
+              <thead>
+                <tr>
+                  <th>Travel History: Date(s)</th>
+                  <th>Notes</th>
+                  <th>Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>02/08/2025 - 02/14/2025</td>
+                  <td>Recent travel to Chandrila</td>
                   <td />
                 </tr>
               </tbody>
@@ -603,6 +640,22 @@
                 codeSystemName="SNOMED CT"
                 displayName="Not pregnant" />
             </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <!-- [eICR R2 STU1.1] Travel History -->
+              <templateId root="2.16.840.1.113883.10.20.15.2.3.1" />
+              <templateId extension="2016-12-01" root="2.16.840.1.113883.10.20.15.2.3.1" />
+              <id root="79565142-eae0-4213-a3b3-b73cdf474682" />
+              <code code="420008001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"
+                displayName="Travel" />
+              <text>Recent travel to Chandrila</text>
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="20250208" />
+                <high value="20250214" />
+              </effectiveTime>
+            </act>
           </entry>
         </section>
       </component>
