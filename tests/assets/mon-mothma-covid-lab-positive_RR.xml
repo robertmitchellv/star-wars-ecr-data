@@ -404,19 +404,22 @@
                         <templateId extension="2017-04-01"
                           root="2.16.840.1.113883.10.20.15.2.4.3" />
                         <participantRole>
-                          <id extension="ht" root="2.16.840.1.113883.4.6" />
+                          <!-- made up senate district authoring agency id -->
+                          <id extension="SDDH-GC-500" root="2.16.840.1.113883.4.6" />
                           <code code="RR12"
                             codeSystem="2.16.840.1.114222.4.5.232"
                             codeSystemName="PHIN Questions"
                             displayName="Rules Authoring Agency" />
-                          <addr use="WP">
-                            <streetAddressLine>8000 N. Stadium
-                              Dr</streetAddressLine>
+                          <addr use="H">
+                            <streetAddressLine>200 Corusca Street</streetAddressLine>
                             <city>Senate District</city>
-                            <state>TX</state>
-                            <postalCode>77054</postalCode>
+                            <state>Galactic City</state>
+                            <postalCode>GC-500</postalCode>
+                            <county>Administrative Core</county>
+                            <country>Coruscant</country>
                           </addr>
-                          <telecom use="WP" value="832-393-5080" />
+                          <telecom use="WP" value="tel:+1-555-777-0123" />
+                          <telecom use="WP" value="fax:+1-555-777-0987" />
                           <playingEntity>
                             <name>Senate District Health Department</name>
                           </playingEntity>
@@ -431,14 +434,16 @@
                             codeSystem="2.16.840.1.114222.4.5.232"
                             codeSystemName="PHIN Questions"
                             displayName="Routing Entity" />
-                          <addr use="WP">
-                            <streetAddressLine>8000 N. Stadium
-                              Dr</streetAddressLine>
+                          <addr use="H">
+                            <streetAddressLine>200 Corusca Street</streetAddressLine>
                             <city>Senate District</city>
-                            <state>TX</state>
-                            <postalCode>77054</postalCode>
+                            <state>Galactic City</state>
+                            <postalCode>GC-500</postalCode>
+                            <county>Administrative Core</county>
+                            <country>Coruscant</country>
                           </addr>
-                          <telecom use="WP" value="832-393-5080" />
+                          <telecom use="WP" value="tel:+1-555-777-0123" />
+                          <telecom use="WP" value="fax:+1-555-777-0987" />
                           <playingEntity>
                             <name>Senate District Health Department</name>
                           </playingEntity>
